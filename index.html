@@ -1,0 +1,284 @@
+<html>  
+    <head>  
+        <script type="text/javascript" src="app.js"> </script>  
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+    </head>
+<body onload=finalproject()> 
+
+
+<div>
+<h2 class="section">2023 NFL Draft Prospects Visualization</h2>
+With the 2023 NFL Draft Combine (an annual week-long showcase where draft prospects perform physical and skill tests) having just been completed, NFL teams are beginning to finalize what players they are most interested
+in drafting from April 27 - April 29. Many NFL fans have been discussing amongst themselves about which players fit their favorite team the best
+and what positions their favorite team should address during the NFL Draft. To understand the characteristics of each draft prospect,
+I have created some visualizations that answer questions about which players were the quickest at the Combine, where players are coming from, and which players
+might have the most chemistry together if they were to be drafted by the same team. 
+<br>
+<div>
+<h3>Is There a Difference in the 3-cone Drill and the Shuttle Drill?</h3>
+At the NFL Combine, there are two physical drills that prospects can participate in that test the player's agility: the 3-cone drill and the 20-yard shuttle.
+The difference between the two drills is that the shuttle drill tests a player's ability to change speeds and accelerate to their top speed, which the 3-cone drill doesn't do.
+However, many fans and pundits have argued that both drills are somewhat redundant as they both test a player's change of direction and stop-start abilities.
+The scatter plot below compares a player's time in both of these drills.
+<br>
+<br>
+<div id="plot1">
+    <div id="checklist">
+    <table class="tables">
+        <tr>
+            <td>
+                <input type="checkbox" id="pos_C" name = "position" value="C" checked="Checked" class = "pl"> Center
+            </td>
+            <td>
+                <input type="checkbox" id="pos_CB" name = "position" value="CB" checked="Checked" class = "pl"> Cornerback
+            </td>
+            <td>
+                <input type="checkbox" id="pos_DT" name = "position" value="DT" checked="Checked" class = "pl"> Defensive Tackle
+            </td>
+        </tr>
+        <!-- <br> -->
+        <tr>
+            <td>
+                <input type="checkbox" id="pos_EDGE" name = "position" value="EDGE" checked="Checked" class = "pl"> EDGE Rusher
+            </td>
+            <td>
+                <input type="checkbox" id="pos_G" name = "position" value="G" checked="Checked" class = "pl"> Offensive Guard
+            </td>
+            <td>
+                <input type="checkbox" id="pos_LB" name = "position" value="LB" checked="Checked" class = "pl"> Linebacker
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" id="pos_OT" name = "position" value="OT" checked="Checked" class = "pl"> Offensive Tackle
+            </td>
+            <td>
+                <input type="checkbox" id="pos_QB" name = "position" value="QB" checked="Checked" class = "pl"> Quarterback
+            </td>
+            <td>
+                <input type="checkbox" id="pos_RB" name = "position" value="RB" checked="Checked" class = "pl"> Running Back
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" id="pos_SAF" name = "position" value="SAF" checked="Checked" class = "pl"> Safety
+            </td>
+            <td>
+                <input type="checkbox" id="pos_TE" name = "position" value="TE" checked="Checked" class = "pl"> Tight End
+            </td>
+            <td>
+                <input type="checkbox" id="pos_WR" name = "position" value="WR" checked="Checked" class = "pl"> Wide Receiver
+            </td>
+        </tr>
+    </table>
+    </div>
+    </div>
+    <div id="scatter_plot" class="center_plot">
+    </div><br><br>
+</div>    
+As shown in the graph above, players who did well in one drill also did well in the other drill, 
+while doing poor in one drill also meant you were likely to have done poorly in the other drill.
+Given that there were some players who participated in only of of the two drills, you could potentially
+predict the approximate time that player would have gotten in the drill that they skipped. Also, since there does
+seem to be a positive correlation between the two drills, you could also only use one drill to determine a player's agility.
+<div>
+    <br>
+    <br>
+    <b>Plot Information:</b>
+    <br>
+    - Color Scheme: d3.schemePaired, which is a 12-color scale (no order)
+    <br>
+    - Marks: Points
+    <br>
+    - Channels: Position (Horizontal & Vertical), Color Hue
+    <br>
+    <br>
+</div>
+</div>
+    
+<div>
+<h3>Which Wide Receivers are the Quickest in this Draft Class?</h3>
+On the topic of agility, wide receivers need to be both agile and fast to create separation between them and the opposing
+defenders. While these attributes might not necessarily be the only skills that are important at the position, many teams tend to covet
+wide receivers who possess speed and agility. Below is a stacked bar chart that displays the fastest and most agile wide receivers in this 
+year's draft class, using the 40-yard dash to represent speed and the 3-cone time and shuttle time being used to represent agility.
+<br>
+<br>
+<br>
+<div id="plot2">
+
+    </div>
+    <div id="stacked_bar_chart" class="center_plot">
+    </div>
+</div> 
+</div>    
+<br>
+<br>
+The stacked bar chart above shows that of the wide receivers who participated in all 3 of the speed and
+agility drills, the player with the best blend of speed and agility was Andrei Iosivas, while the player
+who did the worst in the combination of the three drills was Michael Jefferson.
+<div>
+    <br>
+    <br>
+    <b>Plot Information:</b>
+    <br>
+    - Color Scheme: Custom 3-color scale (Navy Blue represents 40yd attribute, Magenta represents 3Cone attribute, and Orange represents Shuttle attribute)
+    <br>
+    - Marks: Areas
+    <br>
+    - Channels: Position (Horizontal & Vertical), Color Hue, Size (Area)
+    <br>
+</div>
+<br>
+<br>
+</div>   
+
+<div>
+<h3>Which Conferences do Most 2023 NFL Draft Prospects Come From?</h3>
+Many college football fans will claim that the best, most competitive conference is whichever conference
+their favorite college team plays in. This debate has bled over into the NFL draft process, where many NFL fans
+wonder which players play in the most competitive conferences, as it can help show how good a player is if they can
+stand out amongst a group of the best players or help show how dominating in a weaker conference might not translate to
+the NFL level. To show which conference might be best conference, I have created a bar chart that represents the conferences
+that most NFL draft prospects come from (minimum 5 prospects from each conference).
+<br>
+<br>
+<br>
+<div id="plot3">
+
+    </div>
+    <div id="bar_chart" class="center_plot">
+    </div>
+</div> 
+</div>   
+<br>
+<br>
+From the above bar chart, it is clear that the SEC has produced more 2023 draft prospects compared to any other conference.
+This isn't surprising when you consider how successful many of the SEC schools have been in the College Football Playoffs,
+with LSU, Alabama, and Georgia (x2) winning the last 4 National Championships. The conference with the second most number of 
+NFL draft prospects in 2023 is the Big Ten, followed by the ACC and the Big 12.
+<div>
+    <br>
+    <br>
+    <b>Plot Information:</b>
+    <br>
+    - Color Scheme: One color (Dark Red)
+    <br>
+    - Marks: Areas
+    <br>
+    - Channels: Position (Horizontal & Vertical), Size (Area)
+    <br>
+    <br>
+</div>
+</div>   
+
+<div>
+<h3>Which States Produced the Most 2023 NFL Draft Prospects?</h3>
+Having seen that many NFL draft prospects come from the SEC, which is a conference located in the southeastern part of the United States,
+it is also important to note that conferences aren't geographically locked, meaning that not all schools from the same conference are in the same
+area. This means that some states may produce significantly more NFL draft prospects than other states, but since there can be multiple conferences
+within the same state, the number of 2023 draft prospects in that state were spread amongst the multiple conferences. To counter this, I've created
+a choropleth that visualizes the number of 2023 NFL Draft prospects that come from each state in the United States.
+<br>
+<br>
+<br>
+<div id="plot4">
+    </div>
+    <div id="choropleth" class="center_plot">
+    </div>
+</div> 
+</div>    
+<br>
+Interestingly, the choropleth above shows that the state that has the most number of 2023 NFL draft prospects is Texas, 
+despite the SEC only having one school based in Texas (Texas A&M). This is probably because many of the other major colleges
+in Texas are in other conferences, like the Big 12 (Baylor, TCU, Texas Tech, and Texas).
+<br>
+<br>
+Another fascinating observation from the map is that a majority of the prospects in this year's class comes from a school on the
+east coast, whereas only 3 states on the west coast produced a significant number of prospects in this draft class.
+<div>
+    <br>
+    <br>
+    <b>Plot Information:</b>
+    <br>
+    - Color Scheme: d3.schemeBlues[6], which is a 6-color scale of different shades of blue. Lighter shades of blue represent lower values, while darker shades represent higher values.
+    <br>
+    - Marks: Areas
+    <br>
+    - Channels: Position (Horizontal & Vertical), Color (Saturation), Shape
+    <br>
+    <br>
+</div>
+</div>   
+
+<div>
+    <h3>Which 2023 NFL Draft Defensive Prospects will have the Most Chemistry with Each Other?</h3>
+    In football, having good defensive players isn't the only thing that makes a great defense. It is arguably more important for defensive
+    players to have great chemistry, as if one player slips up, the opposing offense can take advantage of it and change the 
+    balance of the game in their favor. Finding out which defensive players in this draft class that'll have the most chemistry is difficult,
+    but using a player's position, school, and state can help determine who they are more likely to have better chemistry with in the NFL.
+    <br><br>
+    To define a player's chemistry with another player, we use the following point values if the players have the same matching attributes:
+    <br><br><br>
+    <table class="tables">
+        <tr>
+            <th>Attribute</th>
+            <th>Point(s)</th>
+        </tr>
+        <tr>
+            <td>Same Position</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Same School</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Same Position Group*</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Same State</td>
+            <td>20</td>
+        </tr>
+      </table>
+    <br>
+    <br>
+    *  = 3 Position Groups: Defensive Linemen (DE, DT), Linebackers (LB, EDGE), and Defensive Backs (SAF, CB)
+    <br>
+    <br>
+    <br>
+    Given these point values, I've created an adjacency matrix to visualize the chemistry between defensive prospects in this year's NFL draft.
+    From our earlier bar chart, we found that the SEC is the best conference at producing NFL draft prospects, and so the adjacency matrix will include
+    only SEC prospects.
+    <div id="plot5">
+        </div>
+        <div id="adjacency_matrix" class="center_plot">
+        </div>
+    </div> 
+    </div>    
+    <br>
+    <br>
+    The adjacency matrix shows players with higher chemistry values with a darker green color in the cell.
+    Besides for the main diagonal, which has pairs of the same player twice, there are 9 pairs of players with 
+    perfect chemistry, according to our model. NFL teams who are looking to draft multiple defensive players in the draft should look at these pairs
+    if they want to have a more cohesive defensive unit immediately. Simultaneously, drafting defensive players who have a lighter shade of green 
+    in their shared cell will likely mean that the two players will take longer to familiarize themselves together.
+    <div>
+        <br>
+        <br>
+        <b>Plot Information:</b>
+        <br>
+        - Color Scheme: d3.schemeGreens[5], a color scale of 5 shades of green, where the darker the green, the larger the value of the data (chemistry)
+        <br>
+        - Marks: Areas
+        <br>
+        - Channels: Position (Horizontal & Vertical), Color (Saturation), Size
+        <br>
+        <br>
+    </div>
+    </div>
+   
+</body>  
+</html>  
